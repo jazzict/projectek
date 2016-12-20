@@ -18,7 +18,7 @@ class PositionController extends Controller
 	public function create()
     {
         PositionModel::createPosition(Request::post('position_name'));
-        Redirect::to('position');
+        //Redirect::to('position');
     }
 
     public function edit($position_id)

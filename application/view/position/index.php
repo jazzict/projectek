@@ -10,7 +10,7 @@
                 <label>New position: </label><input type="text" name="position_name" />
                 
 
-                <input type="submit" player='Create this position' autocomplete="off" />
+                <input  value="Voeg toe" type="submit" player='Create this position' autocomplete="off" />
 
             </form>
         </p>

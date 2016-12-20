@@ -24,19 +24,19 @@ class PositionModel
         return $query->fetch();
     }
 
-    public static function createPosition($position_name)
+    public static function createPosition($positions_name)
     {
-        if (!$position_name || strlen($position_name) == 0) {
+        if (!$positions_name || strlen($positions_name) == 0) {
             Session::add('feedback_negative', Text::get('FEEDBACK_POSITION_CREATION_FAILED'));
             return false;
         }
 
         $database = DatabaseFactory::getFactory()->getConnection();
-        $position_name = strip_tags($position_name);
+        $positions_name = strip_tags($positions_name);
             //$_POST["team_id"]);
-        $sql = "INSERT INTO positions (position_name, team_id) VALUES (:position_name, 5)";
+        $sql = "INSERT INTO positions (positions_name,) VALUES (:positions_name, )";
         $query = $database->prepare($sql);
-        $query->execute(array(':position_name' => $position_name));
+        $query->execute(array(':positions_name' => $positions_name));
 
         if ($query->rowCount() == 1) {
             return true;
