@@ -17,7 +17,7 @@ class PositionController extends Controller
 	}
 	public function create()
     {
-        PlayerModel::createPosition(Request::post('position_name'));
+        PositionModel::createPosition(Request::post('position_name'));
         Redirect::to('position');
     }
 

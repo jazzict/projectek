@@ -27,12 +27,12 @@
                 </thead>
                 <tbody>
                  <?php foreach ($this->positions as $position) { ?>
-                            <td><?= $position->position_id; ?></td>
-                            <td><?= htmlentities($position->position_name); ?></td>
+                            <td><?= $position->positions_id; ?></td>
+                            <td><?= htmlentities($position->positions_name); ?></td>
                            
                                 
-                            <td><a href="<?= Config::get('URL') . 'position/edit/' . $position->position_id; ?>">Edit</a></td>
-                            <td><a href="<?= Config::get('URL') . 'position/delete/' . $position->position_id; ?>">Delete</a></td>
+                            <td><a href="<?= Config::get('URL') . 'position/edit/' . $position->positions_id; ?>">Edit</a></td>
+                            <td><a href="<?= Config::get('URL') . 'position/delete/' . $position->positions_id; ?>">Delete</a></td>
                         </tr>
                     <?php } ?>
                 </tbody>
