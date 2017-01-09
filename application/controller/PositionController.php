@@ -17,26 +17,26 @@ class PositionController extends Controller
 	}
 	public function create()
     {
-        PositionModel::createPosition(Request::post('position_name'));
-        //Redirect::to('position');
+        PositionModel::createPosition(Request::post('positions_name'));
+        Redirect::to('position');
     }
 
-    public function edit($position_id)
+    public function edit($positions_id)
     {
         $this->View->render('position/edit', array(
-            'position' => PositionModel::getPosition($position_id)
+            'position' => PositionModel::getPosition($positions_id)
         ));
     }
 
     public function editSave()
     {
-        PositionModel::updatePosition(Request::post('position_id'), Request::post('position_name'));
+        PositionModel::updatePosition(Request::post('positions_id'), Request::post('positions_name'));
         Redirect::to('position');
     }
 
-      public function delete($position_id)
+      public function delete($positions_id)
     {
-        PositionModel::deletePosition($position_id);
+        PositionModel::deletePosition($positions_id);
         Redirect::to('position');
     }
 

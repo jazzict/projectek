@@ -13,13 +13,13 @@ class PositionModel
         return $query->fetchAll();
     }
 
-    public static function getPosition($position_id)
+    public static function getPosition($positions_id)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "SELECT position_id, position_name FROM positions WHERE position_id=$position_id LIMIT 1";
+        $sql = "SELECT positions_id, positions_name FROM positions WHERE positions_id=$positions_id LIMIT 1";
         $query = $database->prepare($sql);
-        $query->execute(array(':position_id' => $position_id));
+        $query->execute(array(':positions_id' => $positions_id));
 
         return $query->fetch();
     }
@@ -34,7 +34,7 @@ class PositionModel
         $database = DatabaseFactory::getFactory()->getConnection();
         $positions_name = strip_tags($positions_name);
             //$_POST["team_id"]);
-        $sql = "INSERT INTO positions (positions_name,) VALUES (:positions_name, )";
+        $sql = "INSERT INTO positions (positions_name) VALUES (:positions_name )";
         $query = $database->prepare($sql);
         $query->execute(array(':positions_name' => $positions_name));
 
@@ -47,37 +47,37 @@ class PositionModel
         return false;
     }
 
-    public static function updatePosition($position_id, $position_name)
+    public static function updatePosition($positions_id, $positions_name)
     {
-        if (!$position_id || !$position_name) {
+        if (!$positions_id || !$positions_name) {
             return false;
         }
 
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "UPDATE positions SET position_name = :position_name WHERE position_id = :position_id LIMIT 1";
+        $sql = "UPDATE positions SET positions_name = :positions_name WHERE positions_id = :positions_id LIMIT 1";
         $query = $database->prepare($sql);
-        $query->execute(array(':position_id' => $position_id, ':position_name' => $position_name));
+        $query->execute(array(':positions_id' => $positions_id, ':positions_name' => $positions_name));
 
         if ($query->rowCount() == 1) {
             return true;
         }
 
-        Session::add('feedback_negative', Text::get('FEEDBACK_position_EDITING_FAILED'));
+        Session::add('feedback_negative', Text::get('FEEDBACK_POSITION_EDITING_FAILED'));
         return false;
     }
 
-        public static function deletePosition($position_id)
+        public static function deletePosition($positions_id)
     {
-        if (!$position_id) {
+        if (!$positions_id) {
             return false;
         }
 
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "DELETE FROM positions WHERE position_id = :position_id LIMIT 1";
+        $sql = "DELETE FROM positions WHERE positions_id = :positions_id LIMIT 1";
         $query = $database->prepare($sql);
-        $query->execute(array(':position_id' => $position_id));
+        $query->execute(array(':positions_id' => $positions_id));
 
         if ($query->rowCount() == 1) {
             return true;
